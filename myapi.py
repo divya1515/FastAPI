@@ -1,4 +1,5 @@
 from fastapi import FastAPI,Path
+from typing import Optional
 
 app=FastAPI()
 
@@ -18,3 +19,9 @@ def get_student(student_id:int=Path(...,description="The ID of the student you w
     return students[student_id]
 # student_id must be int and some more conditions tobe applied on student_id is defined in Path  ... indicates that it is required , and no default value can be given to this id , and description is given for id , id must be greater than 0 (gt=0) and less than 3(lt=3)
 
+@app.get("/get-by-name")
+def get_student(name:Optional[str]=None):
+    for student_id in students:
+        if students[student_id]["name"]==name:
+            return students[student_id]
+    return {"Data":"Not found"}  
