@@ -1,0 +1,4 @@
+FastAPI --> Modern framework , very good feature of async programming
+FastAPI provides the swagger UI, ReDOC to check ( automatic documentation) just like postman
+Based on PYthon Types
+Based on Open API , JSON Schema
