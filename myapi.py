@@ -24,6 +24,7 @@ class Student(BaseModel):
     name:str
     rollno:str
 
+
 @app.get("/get-by-name/{student_id}")
 def get_student(*,student_id:int,name:Optional[str]=None,):
     for student_id in students:
@@ -36,4 +37,19 @@ def create_student(student_id:int,student:Student):
     if student_id in students:
         return {"Error":"Student-exists"}
     students[student_id]=student
+    return students[student_id]
+
+class updateStudent(BaseModel):
+    name:Optional[str]=None
+    rollno:Optional[str]=None
+
+
+@app.put("/update-student/{student_id}")
+def update_student(student_id:int,student:updateStudent):
+    if student_id not in students:
+        return {"Error":"Student does not exist"}
+    if student.name!=None:
+        students[student_id]["name"]=student.name
+    if student.rollno!=None:
+        students[student_id]["rollno"]=student.rollno
     return students[student_id]
