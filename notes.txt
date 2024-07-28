@@ -9,7 +9,8 @@ def get_student(name:str=None):
     for student_id in students:
         if students[student_id]["name"]==name:
             return students[student_id]
-    return {"Data":"Not found"} it is query parameter here if str=None it means that str is not required or it is optional ..2nd way to make this optional is 
+    return {"Data":"Not found"}
+     it is query parameter here if str=None it means that str is not required or it is optional ..2nd way to make this optional is 
     @app.get("/get-by-name")
 def get_student(name:Optional[str]=None):
     for student_id in students:
